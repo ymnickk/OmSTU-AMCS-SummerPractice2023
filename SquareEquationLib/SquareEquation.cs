@@ -1,47 +1,37 @@
 ﻿namespace SquareEquationLib;
-
 public class SquareEquation
 {
     public static double[] Solve(double a, double b, double c)
     {
-        double eps = 0.000000001;
         double[] answer;
-
-        if (Math.Abs(a) < eps)
+        double x1, x2;
+        double eps = 1e-9;
+        if ((-eps < a && a < eps)||
+            double.IsInfinity(a) || double.IsInfinity(b) ||
+            double.IsInfinity(c) || double.IsNaN(a) ||
+            double.IsNaN(b) || double.IsNaN(c))                                                 
         {
             throw new System.ArgumentException();
         }
-
-        foreach (double x in new double[] { a, b, c })
+        b = b/a;
+        c = c/a;
+        double discriminant = Math.Pow(b, 2) - 4 * c;
+        if (discriminant <= -eps)
         {
-            if (double.IsNaN(x) || double.IsInfinity(x))
-            {
-                throw new System.ArgumentException();
-            }
+            answer = new double [0];
+            return answer;
         }
-
-        double d = Math.Pow(b, 2) - 4 * a * c;
-
-        if (d < 0 && !(Math.Abs(d) < eps))
+        else if (Math.Abs(discriminant)<eps)
         {
-            answer = new double[0];
-
-        }
-        else if (d < eps)
-        {
-            answer = new double[1];
-            answer[0] = -(b + Math.Sign(b) * Math.Sqrt(d)) / 2;
-
+            answer = new double [1] { -b / 2 };
+            return answer;
         }
         else
         {
-            answer = new double[2];
-            answer[0] = -(b + Math.Sign(b) * Math.Sqrt(d)) / 2;
-            answer[1] = c / answer[0];
-
+            x1 = -(b + Math.Sign(b) * Math.Sqrt(discriminant)) / 2;
+            x2 = c / x1;
+            answer = new double [2] { x1, x2 };
+            return answer;
         }
-
-        return answer;
-
     }
 }

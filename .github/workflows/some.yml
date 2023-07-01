@@ -2,7 +2,7 @@ name: square equation test
 
 on:
   push:
-    branches: ["square_equation"]
+    branches: ["zadanie_6"]
 
 jobs:
   build:
@@ -24,3 +24,12 @@ jobs:
 
       - name: Test
         run: ./SquareEquationTest ./SquareEquationLib/bin/Debug/net7.0/SquareEquationLib.dll
+
+      - name: XUnit MSBuild test
+        run: cd XUnit.Coverlet.MSBuild && dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
+
+      - name: XUnit Collector test
+        run: cd XUnit.Coverlet.Collector && dotnet test --collect:"XPlat Code Coverage"
+
+      - name: DBB test
+        run: cd XUnit.Tests && dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura

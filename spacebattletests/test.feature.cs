@@ -19,7 +19,7 @@ namespace spacebattletests
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public partial class ПеремещениеШатлаFeature : object, Xunit.IClassFixture<ПеремещениеШатлаFeature.FixtureData>, System.IDisposable
+    public partial class Перемещение_ШатлаFeature : object, Xunit.IClassFixture<Перемещение_ШатлаFeature.FixtureData>, System.IDisposable
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;

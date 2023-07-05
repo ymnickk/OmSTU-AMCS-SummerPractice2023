@@ -1,0 +1,12 @@
+{
+    "Response": [
+      {
+        "Discipline": "Programming",
+        "Mark": 4.25
+      },
+      {
+        "Discipline": "Algebra",
+        "Mark": 4.25
+      }
+    ]
+  }
